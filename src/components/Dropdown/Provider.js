@@ -1,15 +1,15 @@
 import React, { useCallback, useState, useEffect } from 'react';
 
-const Context = React.createContext();
+export const Context = React.createContext();
 
-export function Dropdownprovider({ children }) {
+export function DropdownProvider({ children }) {
     const [options, setOptions] = useState([]);
     const [targetId, setTargetId] = useState(null);
     const [cacheId, setChachId] = useState(null);
 
     const registerOption = useCallback(({
         id,
-        optionDimensios,
+        optionDimensions,
         optionCenterX,
         wrappedContent,
         backgroundHeight,
@@ -18,7 +18,7 @@ export function Dropdownprovider({ children }) {
             ...items,
             {
                 id,
-                optionDimensios,
+                optionDimensions,
                 optionCenterX,
                 wrappedContent,
                 backgroundHeight,
