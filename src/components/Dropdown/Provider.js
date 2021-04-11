@@ -38,7 +38,7 @@ export function Dropdownprovider({ children }) {
                     return item;
                 } )
             )
-        }, [setOptions];
+        }, [setOptions]
     );
     
 
@@ -61,7 +61,15 @@ export function Dropdownprovider({ children }) {
     
     return (
         <Context.Provider value={{
-
+            registerOption,
+            updateOptionProps,
+            getOptionById,
+            deleteOptionByID,
+            options,
+            targetId,
+            setTargetId,
+            cacheId,
+            setChachId
         }}>
             {children}
         </Context.Provider>
