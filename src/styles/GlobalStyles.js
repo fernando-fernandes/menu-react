@@ -12,7 +12,7 @@ export default createGlobalStyle`
       background: #202020;
   }
 
-  *, :no-button, input {
+  *, button, input {
       border: 0;
       background: none;
       font-family: 'Roboto', -apple-system, system-ui, sans-serif;
