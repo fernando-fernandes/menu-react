@@ -1,32 +1,32 @@
-import  {useState, useCallback, useLayoutEffect} from 'react';
+import { useState, useCallback, useLayoutEffect } from 'react';
 
-const getDimensions = element => element.getBoundingClientRect();
+const getDimensions = (element) => element.getBoundingClientRect();
 
-export function useDimensions(responsive = true){
-    const [dimensions, setDimensions] = useState(null);
-    const [element, setElement] = useState(null);
+export function useDimensions(responsive = true) {
+  const [dimensions, setDimensions] = useState(null);
+  const [element, setElement] = useState(null);
 
-    const hook = useCallback( e => setElement(e), []);
+  const hook = useCallback((e) => setElement(e), []);
 
-    useLayoutEffect( () => {
-        if(element){
-            const updateDimensions = () => {
-                window.requestAnimationFrame( () => {
-                    setDimensions(getDimensions(element));
-                });
-            }
+  useLayoutEffect(() => {
+    if (element) {
+      const updateDimensions = () => {
+        window.requestAnimationFrame(() => {
+          setDimensions(getDimensions(element));
+        });
+      };
 
-            updateDimensions();
+      updateDimensions();
 
-            if(responsive){
-                window.addEventListener('resize', updateDimensions);
+      if (responsive) {
+        window.addEventListener('resize', updateDimensions);
 
-                return () => {
-                    window.removeEventListener('resize', updateDimensions);
-                }
-            }
-        }
-    }, [element, hook, responsive]);
+        return () => {
+          window.removeEventListener('resize', updateDimensions);
+        };
+      }
+    }
+  }, [element, hook, responsive]);
 
-    return [hook, dimensions, element]
+  return [hook, dimensions, element];
 }
